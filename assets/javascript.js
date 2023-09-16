@@ -6,6 +6,27 @@ let operation = null;
 let a=0;
 let b=0;
 
+window.addEventListener("keydown",(key)=>{
+    switch (key.key) {
+        case "Backspace":
+            if(!operation){
+                a = a.toString()
+                a = a.slice(0,-1);
+            }
+            else{
+                if(operatorExists()) return
+                b = b.toString();
+                b = b.slice(0,-1);
+            }
+            result.textContent = result.textContent.slice(0,-1)
+            break;
+    
+        default:
+            break;
+    }
+    
+
+})
 buttons.forEach((button)=>{
     button.addEventListener("click",(e)=>{
         getNumber(e.target.textContent);
@@ -22,10 +43,11 @@ operations.forEach(operation=>{
 function clearMemory(){
     operation = null;
     a=0;
-    b=0;
-    clearScreen();
+    result.textContent = "0"
 }
 function clearScreen(){
+    operation = null;
+    !b ? a = 0: b=0;
     result.textContent = "0"
 }
 function add(a,b){
@@ -39,21 +61,45 @@ function subtract(a,b){
 }
 function divide(a,b){
     if(b==0) return Infinity;
-    return parseInt((a/b)*100)/100;
+    return a/b;
 }
 function getNumber(number){
     if(operation===null){
         if(!a) a = "";
         if(!(!a && number == "0")){
-            a += number;
-            result.textContent = a;
+            if(number === "."){
+                if(!result.textContent.includes(".")){
+                    if(!a) a = "0"
+                    a += number;
+                    result.textContent = a;
+                }
+            }
+            else{
+                a += number;
+                result.textContent = a;
+            }
         }
     }
     else{
         if(!b) b = "";
         if(!(!b && number == "0")){
-            b += number;
-            result.textContent += number;
+            if(number === "."){
+                if(!b.includes(".")){
+                    if(!b){
+                        b = "0."
+                        result.textContent += b;
+                    }
+                    else{
+                        b += number;
+                        result.textContent += number;
+                    }
+                }
+            }
+            else{
+                if(result.textContent.endsWith(" 0")) result.textContent = result.textContent.slice(0,-1);
+                b += number;
+                result.textContent += number;
+            }
         }
         else{
             if(!result.textContent.endsWith("0")){
@@ -68,6 +114,11 @@ function operate(){
         result.textContent = a;
     }
     else{
+        let finalResult = operation(+a,+b);
+        if(!(parseInt(finalResult)===finalResult)){
+
+            finalResult = parseInt(finalResult*100)/100
+        }
         result.textContent = a = operation(+a,+b);
         b = 0;
         operation = null;
