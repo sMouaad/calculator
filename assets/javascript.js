@@ -1,10 +1,25 @@
 const result = document.querySelector(".result")
 const buttons = document.querySelectorAll(".button")
 const operations = document.querySelectorAll(".operation")
+const arrows = document.querySelectorAll(".arrow")
 
 let operation = null;
 let a=0;
 let b=0;
+
+arrows.forEach(arrow=>{
+    arrow.addEventListener("click",e=>{
+        switch (e.target.textContent) {
+            case "<":
+                result.scrollBy(-20,0);
+                break;
+        
+            default:
+                result.scrollBy(20,0);
+                break;
+        }
+    })
+})
 
 window.addEventListener("keydown",(key)=>{
     switch (key.key) {

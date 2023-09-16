@@ -63,3 +63,14 @@ button{
 button:hover{
     background-color: rgb(219, 211,197);
 }
+.arrow{
+    height:40px;
+    width:40px;
+    font-size:30px;
+    line-height: 40px;
+}
+.arrow-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
