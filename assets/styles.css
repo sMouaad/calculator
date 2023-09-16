@@ -1,0 +1,37 @@
+*{
+    text-align: center;
+    border:solid 1px black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.flex-container{
+    display:flex;
+    padding:5px;
+    gap:5px;
+}
+.center{
+    justify-content: center;
+    align-items: center;
+}
+button{
+    font-size: 50px;
+    border:solid 1px black;
+    height:100px;
+    width:100px;
+    line-height: 100px;
+}
+.column{
+    flex-direction: column;
+}
+.result{
+    height:50px;
+    text-align: end;
+    line-height: 50px;
+    font-size: 50px;
+}
+.result-container{
+    padding:20px;
+}
+button:hover{
+    background-color: rgb(213, 213, 213);
+}
