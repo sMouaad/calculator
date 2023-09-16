@@ -7,7 +7,8 @@
     src: url(Robinson\ Regular\ 400.otf);
 }
 body{
-    background-color: gold;
+    background: rgb(255,122,0);
+    background: radial-gradient(circle, rgba(255,122,0,1) 0%, rgba(255,255,0,1) 100%);
 }
 *{
     text-align: center;
@@ -44,14 +45,17 @@ button{
     flex-direction: column;
 }
 .result{
+    text-align: start;
     height:50px;
-    text-align: end;
     line-height: 50px;
     font-size: 50px;
     font-family: segment;
     background-color: rgb(190, 190, 190);
     border-radius: 5px;
     padding:5px;
+    max-width: 295px;
+    overflow:hidden;
+    white-space: nowrap;
 }
 .result-container{
     padding:20px;

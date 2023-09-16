@@ -111,6 +111,7 @@ function getNumber(number){
 
         }
     }
+    result.scrollLeft = result.scrollWidth;
 }
 function operate(){
     if(!operation){
