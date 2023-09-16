@@ -9,16 +9,7 @@ let b=0;
 window.addEventListener("keydown",(key)=>{
     switch (key.key) {
         case "Backspace":
-            if(!operation){
-                a = a.toString()
-                a = a.slice(0,-1);
-            }
-            else{
-                if(operatorExists()) return
-                b = b.toString();
-                b = b.slice(0,-1);
-            }
-            result.textContent = result.textContent.slice(0,-1)
+            remove()
             break;
     
         default:
@@ -39,6 +30,18 @@ operations.forEach(operation=>{
         setOperation(e.target.textContent)
     })
 })
+function remove(){
+    if(!operation){
+        a = a.toString()
+        a = a.slice(0,-1);
+    }
+    else{
+        if(operatorExists()) return
+        b = b.toString();
+        b = b.slice(0,-1);
+    }
+    result.textContent = result.textContent.slice(0,-1)
+}
 
 function clearMemory(){
     operation = null;
@@ -115,11 +118,13 @@ function operate(){
     }
     else{
         let finalResult = operation(+a,+b);
-        if(!(parseInt(finalResult)===finalResult)){
-
-            finalResult = parseInt(finalResult*100)/100
+        a = finalResult;  
+        if(operation=divide && !(parseInt(finalResult)===finalResult)){
+            if(b%7==0 || b%3==0){
+                finalResult = parseInt(finalResult*100)/100
+            }
         }
-        result.textContent = a = operation(+a,+b);
+        result.textContent = finalResult;
         b = 0;
         operation = null;
     }
