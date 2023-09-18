@@ -9,8 +9,8 @@ let b=0;
 
 arrows.forEach(arrow=>{
     arrow.addEventListener("click",e=>{
-        switch (e.target.textContent) {
-            case "<":
+        switch (e.target.classList[1]) {
+            case "left":
                 result.scrollBy(-20,0);
                 break;
         
