@@ -64,13 +64,35 @@ button:hover{
     background-color: rgb(219, 211,197);
 }
 .arrow{
-    height:40px;
-    width:40px;
-    font-size:30px;
-    line-height: 40px;
+    height:0px;
+    width:0px;
+    background: transparent;
+    border:none;
 }
 .arrow-container{
+    height:80px;
+    width: 80px;
+    gap:4px;
     display:flex;
     justify-content: center;
     align-items: center;
+}
+
+.left{
+    border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+   border-right: 35px solid rgb(244, 246, 241);
+}
+.right{
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+   border-left: 35px solid rgb(244, 246, 241);
+}
+.arrow.left:hover{
+    background-color: transparent;
+    border-right: 35px solid rgb(219, 211,197);
+}
+.arrow.right:hover{
+    background-color: transparent;
+    border-left: 35px solid rgb(219, 211,197);
 }
